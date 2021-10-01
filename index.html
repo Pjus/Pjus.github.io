@@ -1,1 +1,65 @@
-"Hello World" 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/clock.css">
+    <link rel="stylesheet" href="src/css/login.css">
+
+    <!-- 영어폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <!-- 한글폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <title>Clone</title>
+</head>
+<body class="basic">
+    <main>
+        <div class="todo"></div>
+
+        <div id="login-button">
+            <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png"></img>
+        </div>
+
+        <form id="login-form" class="hidden" action="">
+            <input 
+                required 
+                maxlength="15" 
+                type="text" 
+                placeholder="ID..."
+            />
+            <input type="submit" value="Log In">
+        </form>
+ 
+        <div id="greet" class="hidden"></div>
+
+
+        <form id="todo-form" class="hidden">
+            <input type="text" placeholder="Write a To Do and Press Enter" required/>
+        </form>
+        <div class="todo-box">
+            <ul id="todo-list"></ul>
+        </div>
+        <div id="clock">
+            <p class="date"></p>
+            <p class="time">00:00:00</p>
+        </div>
+
+
+
+
+    </main>
+    <script src="src/js/login.js"></script>
+    <script src="src/js/clock.js"></script>
+    <script src="src/js/todo.js"></script>
+    <script src="src/js/back.js"></script>
+
+
+</body>
+</html>
