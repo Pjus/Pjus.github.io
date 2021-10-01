@@ -1,3 +1,8 @@
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Sunflower', sans-serif;
+    background-size: 100% auto;
+}
 .basic {
     background-color: black;
     background-size: cover;
@@ -24,8 +29,11 @@
 /* todo */
 
 .todo-box {
-    position: relative;
+    position: absolute;
     margin-left: 50px; 
+    top: 50%;
+    transform: translateY(-50%);
+ 
 }
 
 #todo-list li {
@@ -36,7 +44,6 @@
     text-shadow: 0 0 20px rgb(10, 113, 230),  0 0 20px rgba(10, 175, 230, 0);
     font-size: 30px;
     list-style: decimal;
-    margin-top: 5px;
     margin-left: 50px;
 }
 
@@ -45,11 +52,11 @@
 }
 
 #todo-list li button {
+    background-color: transparent;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     color: white;
-    margin-left: 10px;
     width: 20px;
     height: 20px;
     text-align: center;
@@ -57,5 +64,6 @@
     display: inline-block;
     padding: auto;
     border: none;
+    font-size: 20px;
 
 }
