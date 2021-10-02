@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="src/css/login.css">
     <link rel="stylesheet" href="src/css/weather.css">
     <link rel="stylesheet" href="src/css/todo.css">
+    <link rel="stylesheet" href="src/css/nav.css">
+
 
 
 
@@ -21,10 +23,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Sunflower:wght@300&display=swap" rel="stylesheet">
-    <title>Clone</title>
+    <title>My App</title>
 </head>
 <body class="basic">
     <main>
+
+
         <div class="todo"></div>
 
         <div id="login-button">
@@ -47,9 +51,14 @@
         <form id="todo-form" class="hidden">
             <input type="text" placeholder="Write a To Do and Press Enter" required/>
         </form>
-        <div class="todo-box">
-            <ul id="todo-list"></ul>
+
+        <div class="hidden" id="container">
+            <h1>ToDo List</h1>
+            <div class="items" id="todo-list">
+              <h2 class="undone" aria-hidden="true">Not Done</h2>
+            </div>
         </div>
+
         <div id="clock">
             <p class="date"></p>
             <p class="time">00:00:00</p>

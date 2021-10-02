@@ -14,26 +14,20 @@ function handleMouseEnter(btn) {
     btn.innerText = "✔"
 }
 
-function deleteToDo(event) {
-    const li = event.target.parentElement;
-    li.remove();
-    todos = todos.filter((toDo) => toDo.id !== parseInt(li.id));
-    saveToDos();
-}
-
 function paintToDo(newToDoObj) {
-    const li = document.createElement("li");
+    const inp = document.createElement("input");
+    const lab = document.createElement("label");
 
-    li.id = newToDoObj.id;
+    inp.id = newToDoObj.id;
+    inp.type = "checkbox"
 
-    const span = document.createElement("span");
-    span.innerHTML = newToDoObj.text;
-    const btn = document.createElement('button');
-    btn.innerText = "✘";
-    btn.addEventListener("click", deleteToDo)
-    li.appendChild(span)
-    li.appendChild(btn)
-    todoList.appendChild(li);
+    lab.for = newToDoObj.id;
+    lab.innerText = newToDoObj.text;
+
+    todoList.appendChild(inp);
+    todoList.appendChild(lab);
+
+    lab.addEventListener("click", deleteLabel);
 }
 
 function handleToDoSubmit(event){
@@ -50,6 +44,20 @@ function handleToDoSubmit(event){
     saveToDos();
 }
 
+function deleteLabel(event){
+    const input = event.target.parentElement.children[1];
+    const label = event.target.parentElement.children[2];
+
+    label.remove()
+    input.remove()
+
+    console.log(todos)
+    console.log(input.id)
+
+    todos = todos.filter((toDo) => toDo.id !== parseInt(input.id));
+    saveToDos();
+}
+
 todoForm.addEventListener("submit", handleToDoSubmit);
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
@@ -57,4 +65,6 @@ if (savedToDos !== null){
     const parsedToDos = JSON.parse(savedToDos);
     todos = parsedToDos;
     parsedToDos.forEach(paintToDo);
+    container.classList.remove(HIDDEN_CLASSNAME);
+
 }

@@ -5,6 +5,7 @@
     text-align: right;
     margin-top: 600px;
     margin-right: 20px;
+    float: right;
 }
 
 #weather img {
