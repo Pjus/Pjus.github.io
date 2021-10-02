@@ -1,16 +1,19 @@
 const loginBtn = document.querySelector('#login-button');
-
 const loginForm = document.querySelector('#login-form');
 const loginInput = document.querySelector('#login-form input');
+
 const greeting = document.querySelector("div#greet");
 const toDo = document.querySelector("form#todo-form")
-const container = document.getElementById("container");
+const weather = document.querySelector('div#weather')
+const container = document.querySelector("div#container");
 
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
-const saved = localStorage.getItem(USERNAME_KEY)
+const logout = document.querySelector('button#logout')
 
+
+console.log(container)
 
 function onLoginSubmit(event){
     event.preventDefault();
@@ -26,18 +29,9 @@ function paintGreeting(userName){
     greeting.innerText = `Hello ${userName}`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
     loginBtn.classList.add(HIDDEN_CLASSNAME);
-}
-
-if (saved === null){
-    // show
-    loginBtn.classList.remove(HIDDEN_CLASSNAME);
-    loginForm.addEventListener("submit", onLoginSubmit);
-}
-else{
-    // hide
-    paintGreeting(saved);
     toDo.classList.remove(HIDDEN_CLASSNAME);
-
+    container.classList.remove(HIDDEN_CLASSNAME);
+    weather.classList.remove(HIDDEN_CLASSNAME);
 }
 
 function goLogin(event){
@@ -46,5 +40,25 @@ function goLogin(event){
     loginForm.classList.remove(HIDDEN_CLASSNAME);
 }
 
+const saved = localStorage.getItem(USERNAME_KEY)
 
 loginBtn.addEventListener("click", goLogin)
+
+
+if (saved === null){
+    // not login
+    loginForm.addEventListener("submit", onLoginSubmit);
+}
+else{
+    // login
+    paintGreeting(saved);
+}
+
+function logOut(){
+    localStorage.removeItem(USERNAME_KEY)
+    localStorage.removeItem('todos')
+    location.reload();
+
+}
+
+logout.addEventListener("click", logOut)

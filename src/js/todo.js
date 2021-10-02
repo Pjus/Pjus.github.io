@@ -61,10 +61,12 @@ function deleteLabel(event){
 todoForm.addEventListener("submit", handleToDoSubmit);
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
+
 if (savedToDos !== null){
+    console.log(container.classList)
+    container.classList.remove("hidden");
     const parsedToDos = JSON.parse(savedToDos);
     todos = parsedToDos;
     parsedToDos.forEach(paintToDo);
-    container.classList.remove(HIDDEN_CLASSNAME);
 
 }

@@ -27,10 +27,8 @@
 </head>
 <body class="basic">
     <main>
-
-
+        <button id="logout">Logout</button>
         <div class="todo"></div>
-
         <div id="login-button">
             <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png"></img>
         </div>
@@ -47,12 +45,11 @@
  
         <div id="greet" class="hidden"></div>
 
-
-        <form id="todo-form" class="hidden">
+        <form class="hidden" id="todo-form">
             <input type="text" placeholder="Write a To Do and Press Enter" required/>
         </form>
 
-        <div class="" id="container">
+        <div class="hidden" id="container">
             <h1>ToDo List</h1>
             <div class="items" id="todo-list">
               <h2 class="undone" aria-hidden="true">Not Done</h2>
@@ -64,20 +61,21 @@
             <p class="time">00:00:00</p>
         </div>
 
-        <div id="weather">
+        <div id="weather" class="hidden">
             <span></span>
             <br>
             <span></span>
             <span></span>
         </div>
+
     </main>
+
+    
     <script src="src/js/login.js"></script>
     <script src="src/js/clock.js"></script>
     <script src="src/js/todo.js"></script>
     <script src="src/js/back.js"></script>
     <script src="src/js/weather.js"></script>
-
-
 
 </body>
 </html>
