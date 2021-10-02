@@ -21,7 +21,7 @@ function paintToDo(newToDoObj) {
     inp.id = newToDoObj.id;
     inp.type = "checkbox"
 
-    lab.for = newToDoObj.id;
+    lab.id = newToDoObj.id;
     lab.innerText = newToDoObj.text;
 
     todoList.appendChild(inp);
@@ -39,22 +39,16 @@ function handleToDoSubmit(event){
         text: newTodo,
         id: Date.now(),
     }
+
     todos.push(newToDoObj);
     paintToDo(newToDoObj);
     saveToDos();
 }
 
 function deleteLabel(event){
-    const input = event.target.parentElement.children[1];
-    const label = event.target.parentElement.children[2];
-
+    const label = event.target;
     label.remove()
-    input.remove()
-
-    console.log(todos)
-    console.log(input.id)
-
-    todos = todos.filter((toDo) => toDo.id !== parseInt(input.id));
+    todos = todos.filter((toDo) => toDo.id !== parseInt(label.id));
     saveToDos();
 }
 
@@ -63,8 +57,6 @@ todoForm.addEventListener("submit", handleToDoSubmit);
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
 if (savedToDos !== null){
-    console.log(container.classList)
-    container.classList.remove("hidden");
     const parsedToDos = JSON.parse(savedToDos);
     todos = parsedToDos;
     parsedToDos.forEach(paintToDo);
