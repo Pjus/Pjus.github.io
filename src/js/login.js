@@ -9,11 +9,8 @@ const container = document.querySelector("div#container");
 
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
-
 const logout = document.querySelector('button#logout')
 
-
-console.log(container)
 
 function onLoginSubmit(event){
     event.preventDefault();
@@ -58,7 +55,6 @@ function logOut(){
     localStorage.removeItem(USERNAME_KEY)
     localStorage.removeItem('todos')
     location.reload();
-
 }
 
 logout.addEventListener("click", logOut)
