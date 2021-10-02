@@ -3,7 +3,6 @@ const todoInput = todoForm.querySelector("#todo-form input");
 const todoList = document.getElementById("todo-list");
 
 const TODOS_KEY = "todos"
-let liId = 0
 
 let todos = [];
 
@@ -18,31 +17,36 @@ function handleMouseEnter(btn) {
 function deleteToDo(event) {
     const li = event.target.parentElement;
     li.remove();
-    todos.splice(li.id, 1);
-    console.log(todos)
+    todos = todos.filter((toDo) => toDo.id !== parseInt(li.id));
     saveToDos();
 }
 
-function paintToDo(newTodo) {
+function paintToDo(newToDoObj) {
     const li = document.createElement("li");
-    li.id = liId;
+
+    li.id = newToDoObj.id;
+
     const span = document.createElement("span");
-    span.innerHTML = newTodo;
+    span.innerHTML = newToDoObj.text;
     const btn = document.createElement('button');
     btn.innerText = "✘";
     btn.addEventListener("click", deleteToDo)
     li.appendChild(span)
     li.appendChild(btn)
     todoList.appendChild(li);
-    liId += 1;
 }
 
 function handleToDoSubmit(event){
     event.preventDefault();
     const newTodo = todoInput.value;
     todoInput.value = "";
-    paintToDo(newTodo);
-    todos.push(newTodo);
+
+    const newToDoObj = {
+        text: newTodo,
+        id: Date.now(),
+    }
+    todos.push(newToDoObj);
+    paintToDo(newToDoObj);
     saveToDos();
 }
 
